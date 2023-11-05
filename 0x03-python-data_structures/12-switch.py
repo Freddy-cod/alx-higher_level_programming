@@ -1,6 +1,4 @@
 #!/usr/bin/python3
-
-# Define variables
 a = 89
 b = 10
 a, b = b, a
