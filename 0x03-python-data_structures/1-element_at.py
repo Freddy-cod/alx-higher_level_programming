@@ -5,4 +5,3 @@ def element_at(my_list, idx):
         return None  # Return None for invalid indices
     else:
         return my_list[idx]  # Retrieve and return the element atindex
-
