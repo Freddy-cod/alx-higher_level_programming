@@ -31,4 +31,3 @@ result = func(int(argv[1]), int(argv[3]))
 # Display the calculation result
 print("{:d} {:s} {:d} = {:d}".format(int(argv[1]), argv[2],
                                      int(argv[3]), result))
-

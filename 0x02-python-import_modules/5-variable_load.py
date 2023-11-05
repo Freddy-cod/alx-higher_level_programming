@@ -8,4 +8,3 @@ if __name__ != "__main__":
 
 # Prints the value of the variable `a`.
 print(f"{a}")
-
