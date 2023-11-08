@@ -12,4 +12,5 @@ if __name__ == "__main__":
     result = add(a, b)
 
     # Print the result of the addition to the console.
-    print("{} + {} = {}".format(a, b, result))
+    print("{:d} + {:d} = {:d}".format(a, b, result))
+    
