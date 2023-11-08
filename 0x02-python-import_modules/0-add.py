@@ -9,4 +9,3 @@ if __name__ == "__main__":
     result = add(a, b)
     # Print the result of the addition to the console.
     print("{:d} + {:d} = {:d}".format(a, b, result))
-    
