@@ -1,2 +1,2 @@
 #!/usr/bin/python3
-import fast_alphabet_103
+print(*chr(i) for i in range(65, 91))
