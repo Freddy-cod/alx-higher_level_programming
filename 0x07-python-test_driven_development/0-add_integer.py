@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-"""My functions for adding two numbers."""
+"""My function for adding two numbers."""
 
 
 def add_integer(a, b=98):
