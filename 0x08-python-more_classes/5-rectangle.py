@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""5-rectangle, built for Holberton Python project 0x08 task 5.
+"""rectangle.
 """
 
 
