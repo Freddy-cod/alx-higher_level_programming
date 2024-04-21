@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-This is rectangle class. 
+This is rectangle class.
 """
 
 
