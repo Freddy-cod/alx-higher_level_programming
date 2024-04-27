@@ -1,16 +1,12 @@
 #!/usr/bin/python3
-"""
-===========================
-Sort the data.
-===========================
-"""
+"""A module that defines a class named MyList"""
 
 
 class MyList(list):
-    """Class with method print_sorted"""
-    pass
-
+    """A class named MyList
+    Attributes:
+    attr1(print_sorted): prints sorted list
+    """
     def print_sorted(self):
-        """Methot that sorted a list"""
-
-        print(sorted(list(self)))
+        """sorting public instance method"""
+        return(sorted(self))
