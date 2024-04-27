@@ -1,20 +1,20 @@
 #!/usr/bin/python3
-
-"""2D list division"""
+"""Defines a matrix division function."""
 
 
 def matrix_divided(matrix, div):
-    """Divide.
+    """Divide all elements of a matrix.
+
     Args:
-        2dlist (matrix): A list of lists of ints or floats.
-        div: The divisor.
+        matrix (list): A list of lists of ints or floats.
+        div (int/float): The divisor.
     Raises:
         TypeError: If the matrix contains non-numbers.
         TypeError: If the matrix contains rows of different sizes.
         TypeError: If div is not an int or float.
         ZeroDivisionError: If div is 0.
     Returns:
-        2d list.
+        A new matrix representing the result of the division.
     """
     if (not isinstance(matrix, list) or matrix == [] or
             not all(isinstance(row, list) for row in matrix) or
