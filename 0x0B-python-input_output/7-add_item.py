@@ -1,17 +1,16 @@
 #!/usr/bin/python3
-from sys import argv
-"""access commandline arguments"""
-load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
-"""create object from JSON file"""
-save_to_json_file = __import__('7-save_to_json_file').save_to_json_file
-"""writes an object to text file, using JSON representation"""
+"""script that adds all arguments to a Python list"""
+import sys
 
-filename = "add_item.json"
-try:
-    content = load_from_json_file(filename)
-except:
-    content = []
 
-for i in range(1, len(argv)):
-    content.append(argv[i])
-save_to_json_file(content, filename)
+load_from_json_file = __import__("6-load_from_json_file").load_from_json_file
+save_to_json_file = __import__("5-save_to_json_file").save_to_json_file
+
+if __name__ == "__main__":
+    try:
+        my_list = load_from_json_file("add_item.json")
+    except FileNotFoundError:
+        my_list = []
+    for i in range(1, len(sys.argv)):
+        my_list.append(sys.argv[i])
+    save_to_json_file(my_list, "add_item.json")
