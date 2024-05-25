@@ -1,52 +1,53 @@
 #!/usr/bin/python3
-'''Module for N Queens problem.'''
+import sys
 
-
-def isSafe(board, row, col):
-    '''Checks if position is safe from attack.
-
-    Args:
-        board: The board state.
-        row: The row to check.
-        col: The colum to check.
-    '''
-    for c in range(col):
-        if board[c] is row or abs(board[c] - row) is abs(c - col):
+def is_safe(board, row, col):
+    # Check this column on upper side
+    for i in range(row):
+        if board[i] == col or \
+           board[i] - i == col - row or \
+           board[i] + i == col + row:
             return False
     return True
 
+def solve_nqueens(N):
+    def solve(board, row):
+        if row == N:
+            result.append(board[:])
+            return
+        for col in range(N):
+            if is_safe(board, row, col):
+                board[row] = col
+                solve(board, row + 1)
+                board[row] = -1
 
-def checkBoard(board, col):
-    '''Checks the board state column by column using backtracking.
+    result = []
+    board = [-1] * N
+    solve(board, 0)
+    return result
 
-    Args:
-        board: The board state.
-        col: The current colum to check.
-    '''
-    n = len(board)
-    if col is n:
-        print(str([[c, board[c]] for c in range(n)]))
-        return
+def print_solutions(solutions):
+    for solution in solutions:
+        formatted_solution = [[i, solution[i]] for i in range(len(solution))]
+        print(formatted_solution)
 
-    for row in range(n):
-        if isSafe(board, row, col):
-            board[col] = row
-            checkBoard(board, col + 1)
-
-if __name__ == "__main__":
-    import sys
-
+def main():
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
-    n = 0
+
     try:
-        n = int(sys.argv[1])
-    except:
+        N = int(sys.argv[1])
+    except ValueError:
         print("N must be a number")
         sys.exit(1)
-    if n < 4:
+
+    if N < 4:
         print("N must be at least 4")
         sys.exit(1)
-    board = [0 for col in range(n)]
-    checkBoard(board, 0)
+
+    solutions = solve_nqueens(N)
+    print_solutions(solutions)
+
+if __name__ == "__main__":
+    main()
