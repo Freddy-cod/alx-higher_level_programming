@@ -42,4 +42,4 @@ ZeroDivisionError: division by zero
 
 >>> matrix_divided(diff_len, 3)
 Traceback (most recent call last):
-TypeError: Each row of the matri
+TypeError: Each row of the matrix
