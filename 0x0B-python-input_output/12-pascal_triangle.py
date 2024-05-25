@@ -1,24 +1,28 @@
 #!/usr/bin/python3
-"""Pascal's triangle module"""
+"""``pascal_triangle`` module"""
 
 
 def pascal_triangle(n):
-    """Returns a pascal triangle of n size"""
-    pt = []
-    if n <= 0:
-        return pt
-    for i in range(n):
-        pl = []
-        pl.append(1)
-        if i == 0:
-            pt.append(pl)
-            continue
-        for j in range(1, i):
-            try:
-                pl.append(pt[i-1][j-1] + pt[i-1][j])
-            except:
-                continue
-        pl.append(1)
-        pt.append(pl)
+    """
+        Returns a list of lists of integers representing the Pascal's triangle
+        of n.
 
-    return pt
+            Args:
+                n (int): An integer
+    """
+    r = []
+    prev = []
+    curr = []
+    curr_len = 0
+
+    while n > 0:
+        prev = curr
+        curr = curr + [1]
+        i = 1
+        while i < len(prev):
+            curr[i] = prev[i - 1] + prev[i]
+            i += 1
+        r.append(curr)
+        n -= 1
+
+    return r
