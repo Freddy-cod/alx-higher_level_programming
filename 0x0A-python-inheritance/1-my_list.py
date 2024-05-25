@@ -1,12 +1,11 @@
 #!/usr/bin/python3
-"""A module that defines a class named MyList"""
-
+"""
+    Contains MyList class
+"""
 
 class MyList(list):
-    """A class named MyList
-    Attributes:
-    attr1(print_sorted): prints sorted list
-    """
+    """Class that extends the list base class"""
+
     def print_sorted(self):
-        """sorting public instance method"""
-        return(sorted(self))
+        """Prints a sorted list"""
+        print(sorted(self))
