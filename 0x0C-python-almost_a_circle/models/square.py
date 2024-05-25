@@ -1,49 +1,86 @@
 #!/usr/bin/python3
-'''Module for Square class.'''
+"""
+contains class Square which implements Rectangle.
+"""
+
 from models.rectangle import Rectangle
 
 
 class Square(Rectangle):
-    '''A Square class.'''
+    """
+    class Square which implements rectangle
+    """
 
     def __init__(self, size, x=0, y=0, id=None):
-        '''Constructor.'''
-        super().__init__(size, size, x, y, id)
+        """
+        Initializes the instance of the class
 
-    def __str__(self):
-        '''Returns string info about this square.'''
-        return '[{}] ({}) {}/{} - {}'.\
-            format(type(self).__name__, self.id, self.x, self.y, self.width)
+        Args:
+            size: size of the square
+            x: x coordinate of the square
+            y: y coordinate of the square
+            id: id of the square
+        """
+        super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
-        '''Size of this square.'''
+        """
+        getter for size
+        """
         return self.width
 
     @size.setter
     def size(self, value):
+        """
+        setter for size
+        """
+        if type(value) != int:
+            raise TypeError("width must be an integer")
+        if value <= 0:
+            raise ValueError("width must be > 0")
+
         self.width = value
         self.height = value
 
-    def __update(self, id=None, size=None, x=None, y=None):
-        '''Internal method that updates instance attributes via */**args.'''
-        if id is not None:
-            self.id = id
-        if size is not None:
-            self.size = size
-        if x is not None:
-            self.x = x
-        if y is not None:
-            self.y = y
+    def __str__(self):
+        """
+        returns string representation of the square
+        """
+        return "[Square] ({}) {}/{} - {}".format(self.id,
+                                                 self.x, self.y, self.size)
 
     def update(self, *args, **kwargs):
-        '''Updates instance attributes via no-keyword & keyword args.'''
+        """
+        assign an argument to each attribute
+        """
         if args:
-            self.__update(*args)
-        elif kwargs:
-            self.__update(**kwargs)
+            for i, arg in enumerate(args):
+                if i == 0:
+                    self.id = arg
+                if i == 1:
+                    self.size = arg
+                if i == 2:
+                    self.x = arg
+                if i == 3:
+                    self.y = arg
+        else:
+            for key, value in kwargs.items():
+                if key == "id":
+                    self.id = value
+                if key == "size":
+                    self.size = value
+                if key == "x":
+                    self.x = value
+                if key == "y":
+                    self.y = value
 
     def to_dictionary(self):
-        '''Returns dictionary representation of this class.'''
-        return {"id": self.id, "size": self.width,
-                "x": self.x, "y": self.
+        """
+        returns dictionary representation of the square
+        """
+        return {"id": self.id,
+                "x": self.x,
+                "size": self.size,
+                "y": self.y
+                }
