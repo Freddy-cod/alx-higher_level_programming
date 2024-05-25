@@ -1,17 +1,17 @@
 #!/usr/bin/python3
-"""Handles file input and saves to file"""
 from sys import argv
-load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
-save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+"""access commandline arguments"""
+load_from_json_file = __import__('8-load_from_json_file').load_from_json_file
+"""create object from JSON file"""
+save_to_json_file = __import__('7-save_to_json_file').save_to_json_file
+"""writes an object to text file, using JSON representation"""
 
-
-argv.pop(0)
+filename = "add_item.json"
 try:
-    deserialized = load_from_json_file("add_item.json")
-    if deserialized is None:
-        save_to_json_file(argv, "add_item.json")
-    else:
-        deserialized.extend(argv)
-        save_to_json_file(deserialized, "add_item.json")
-except FileNotFoundError:
-    save_to_json_file(argv, "add_item.json")
+    content = load_from_json_file(filename)
+except:
+    content = []
+
+for i in range(1, len(argv)):
+    content.append(argv[i])
+save_to_json_file(content, filename)
