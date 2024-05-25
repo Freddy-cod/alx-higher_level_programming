@@ -1,13 +1,17 @@
 #!/usr/bin/python3
-import json
-"""JavaScript Object Notation"""
+"""Handles file input and saves to file"""
+from sys import argv
+load_from_json_file = __import__('6-load_from_json_file').load_from_json_file
+save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
 
 
-def save_to_json_file(my_obj, filename):
-    """writes an Object to a text file, using a JSON representation
-    Args:
-        my_obj(obj): object
-        filename(str): filename
-    """
-    with open(filename, mode="w", encoding="utf-8") as a_file:
-        a_file.write(json.dumps(my_obj))
+argv.pop(0)
+try:
+    deserialized = load_from_json_file("add_item.json")
+    if deserialized is None:
+        save_to_json_file(argv, "add_item.json")
+    else:
+        deserialized.extend(argv)
+        save_to_json_file(deserialized, "add_item.json")
+except FileNotFoundError:
+    save_to_json_file(argv, "add_item.json")
