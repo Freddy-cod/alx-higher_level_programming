@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-101-stats Module
+Module that reads stdin line by line and computes metrics
 """
 
 if __name__ == '__main__':
@@ -9,15 +9,15 @@ if __name__ == '__main__':
     import sys
 
     file_size = 0
-    valid_codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
-    stats = {k: 0 for k in valid_codes}
+    possible_codes = ["200", "301", "400", "401", "403", "404", "405", "500"]
+    stats = {i: 0 for i in possible_codes}
     counter = 0
 
     def print_stats(stats: dict, file_size: int) -> None:
         print("File size: {:d}".format(file_size))
-        for k, v in sorted(stats.items()):
+        for i, v in sorted(stats.items()):
             if v:
-                print("{}: {}".format(k, v))
+                print("{}: {}".format(i, v))
 
     try:
         for line in sys.stdin:
