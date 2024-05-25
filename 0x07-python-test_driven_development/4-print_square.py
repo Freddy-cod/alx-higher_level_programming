@@ -18,5 +18,5 @@ def print_square(size):
 
     for i in range(size):
         for j in range(size):
-            print('x', end='')
+            print('#', end='')
         print()
