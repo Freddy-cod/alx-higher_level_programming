@@ -1,5 +1,5 @@
 #!/usr/bin/node
-//Argument found or not.
+// Argument found or not.
 
 const args = process.argv;
 if (args.length === 2) {
